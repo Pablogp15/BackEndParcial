@@ -5,11 +5,11 @@ const cloudinary = require('cloudinary');
 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
-
+          
 cloudinary.config({ 
-  cloud_name: 'dj8csnofh', 
-  api_key: '597548295124334', 
-  api_secret: 'pLabEZCvj0zgN9yfWAJM1IvUmxA' 
+  cloud_name: 'dmipwi9rx', 
+  api_key: '382832142727888', 
+  api_secret: '7JsGypjZkyyKHG7IPWnRnEMOOU4' 
 });
 
 // Obtener una imagen de Cloudinary con su id
