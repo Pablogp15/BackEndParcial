@@ -9,10 +9,11 @@ const app = express();
 const port = 5001;
 app.use(express.json());
 app.use(cors());
+          
 cloudinary.config({ 
-  cloud_name: 'dgqruvvjr', 
-  api_key: '961825855861132', 
-  api_secret: 'OMToah82AGwg_ZlI5FiSZ2IYQOU' 
+  cloud_name: 'dmipwi9rx', 
+  api_key: '382832142727888', 
+  api_secret: '7JsGypjZkyyKHG7IPWnRnEMOOU4' 
 });
 
 const logConexionesRoutes = require("./routes/logConexionsRoutes");
