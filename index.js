@@ -6,7 +6,7 @@ const fileUpload = multer();
 const cloudinary = require('cloudinary');
 
 const app = express();
-const port = 5001;
+const port = 5000;
 app.use(express.json());
 app.use(cors());
           
@@ -52,7 +52,7 @@ app.post('/subir', fileUpload.single('imagen'), function (req, res, next) {
 });
 
 mongoose.connect(
-  "mongodb+srv://grupoWeb:grupoWeb@cluster0.1cxeafx.mongodb.net/examenWeb").then(()=>
+  "mongodb+srv://pablogp:pablogp@cluster0.kn0rtn5.mongodb.net/Parcial2").then(()=>
     console.log("Hemos conectado con mongoDB")
   ).catch((error)=>
     console.error(error)
