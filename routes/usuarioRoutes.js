@@ -11,7 +11,6 @@ const cors = require('cors');
 
 router.use(express.json());
 const fileUpload = multer();
-const usuariosSchema = require("../models/usuarios.js");
 
 cloudinary.config({ 
   cloud_name: 'dmipwi9rx', 
@@ -20,11 +19,10 @@ cloudinary.config({
 });
 
 router.get("/", (req, res) => {
-    usuariosSchema
+    eventosSchema
       .find()
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
-      
 });
 
 ///---------------------------------------------- OAUTH ----------------------------------------------///
