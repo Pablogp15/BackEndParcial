@@ -1,22 +1,16 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
 const mongoose = require("mongoose")
-require("dotenv").config({ path: "./config.env" });
+
 const app = express();
-
+const port = 5000;
 app.use(express.json());
+app.use(cors());
 
-const usuarioRoutes = require("./routes/usuarioRoutes.js")
-app.use('/usuarios', usuarioRoutes);
-
-const eventosRoutes = require("./routes/eventosRoutes.js")
-app.use('/eventos', eventosRoutes);
-
-const maparoutes = require("./routes/mapRouter.js")
-app.use('/mapa', maparoutes);
-
+const routes = require("./routes.js")
+app.use('/api', routes);
 mongoose.connect(
-  process.env.ATLAS_URI).then(()=>
+  "mongodb+srv://pablogp:pablogp@cluster0.kn0rtn5.mongodb.net/Parcial2").then(()=>
     console.log("Hemos conectado con mongoDB")
   ).catch((error)=>
     console.error(error)
@@ -25,4 +19,5 @@ mongoose.connect(
 app.get("/",(req,res) =>{
   res.send("Esta es la API")}
 )
-app.listen(5000, console.log("Servidor de Productos escuchando en el puerto ", 5000))
+
+app.listen(port, console.log("Servidor Backend escuchando en el puerto ", port))
