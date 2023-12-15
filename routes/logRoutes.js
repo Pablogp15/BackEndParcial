@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const LogConexiones = require('../models/logConexiones');
+
+
 // GET ALL
 router.get('/', async (req, res) => {
     try {

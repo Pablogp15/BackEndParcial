@@ -1,55 +1,26 @@
 const express = require('express');
 const cors = require("cors");
 const mongoose = require("mongoose")
-const multer = require('multer');
-const fileUpload = multer();
-const cloudinary = require('cloudinary');
 
 const app = express();
-const port = 5000;
+const port = 5001;
 app.use(express.json());
 app.use(cors());
-          
-cloudinary.config({ 
-  cloud_name: 'dmipwi9rx', 
-  api_key: '382832142727888', 
-  api_secret: '7JsGypjZkyyKHG7IPWnRnEMOOU4' 
-});
 
-const logConexionesRoutes = require("./routes/logConexionsRoutes");
-const pardasRoutes = require("./routes/paradasRoutes");
-app.use("/logConexiones", logConexionesRoutes);
-app.use("/paradas", pardasRoutes);
 
-app.post('/subir', fileUpload.single('imagen'), function (req, res, next) {
-  let streamUpload = (req) => {
-      return new Promise((resolve, reject) => {
-          let stream = cloudinary.uploader.upload_stream(
-            (result, error) => {
-              if (result) {
-                resolve(result);
-              } else {
-                reject(error);
-              }
-            }
-          );
+///Routes
+const Userroutes = require("./routes/usuarioRoutes.js")
+const MapRoutes = require("./routes/mapRoutes.js")
+const LogRoutes = require("./routes/logRoutes.js")
+const Cloudinary = require("./routes/cloudinaryRoutes.js")
 
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
-      });
-  };
+app.use('/user', Userroutes);
+app.use('/map', MapRoutes);
+app.use('/logs', LogRoutes);
+app.use('/cloudinary', Cloudinary);
 
-  async function upload(req) {
-    try {
-      let result = await streamUpload(req);
-      res.status(200).json({ message: 'Imagen subida correctamente', imageUrl: result.url});
-    } catch (error) {
-      console.log('Error al subir la imagen: ', error)
-      res.status(500).json({ message: 'Error al subir la imagen:', error});
-    }
-  }
+/////
 
-  upload(req);
-});
 
 mongoose.connect(
   "mongodb+srv://pablogp:pablogp@cluster0.kn0rtn5.mongodb.net/Parcial2").then(()=>
@@ -59,7 +30,7 @@ mongoose.connect(
   )
 
 app.get("/",(req,res) =>{
-  res.send("Esta es la API prueba")}
+  res.send("Esta es la API")}
 )
 
 app.listen(port, console.log("Servidor Backend escuchando en el puerto ", port))
