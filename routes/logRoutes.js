@@ -1,19 +1,17 @@
 //CRUD DE LOG CONEXIONES
 const express = require('express');
 const router = express.Router();
-const LogConexiones = require('../models/logConexiones');
+const logConexionesSchema = require("../models/logConexiones.js");
 
 
 // GET ALL
-router.get('/', async (req, res) => {
-    try {
-        const logConexiones = await LogConexiones.find();
-        res.json(logConexiones);
-    }
-    catch (err) {
-        res.json({ message: err });
-    }
+router.get('/', (req, res) => {
+    logConexionesSchema
+    .find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
+
 // GET ONE
 router.get('/:id', async (req, res) => {
     try {
