@@ -1,0 +1,56 @@
+[
+    {
+      "codLinea": 1,
+      "nombreLinea": "Universidad - Alameda Principal - El Palo (P. Virginia)",
+      "sentido": 1,
+      "orden": 1,
+      "codParada": 1,
+      "nombreParada": "Louis Pasteur",
+      "direccion": "Calle Louis Pasteur, 20, 29016 Málaga",
+      "lon": -4.4222507,
+      "lat": 36.737835
+    },
+    {
+      "codLinea": 1,
+      "nombreLinea": "Universidad - Alameda Principal - El Palo (P. Virginia)",
+      "sentido": 1,
+      "orden": 2,
+      "codParada": 2,
+      "nombreParada": "Plaza de las Américas",
+      "direccion": "Plaza de las Américas, 29016 Málaga",
+      "lon": -4.422297,
+      "lat": 36.738052
+    },
+    {
+      "codLinea": 1,
+      "nombreLinea": "Universidad - Alameda Principal - El Palo (P. Virginia)",
+      "sentido": 1,
+      "orden": 3,
+      "codParada": 3,
+      "nombreParada": "Alameda Principal",
+      "direccion": "Alameda Principal, 29016 Málaga",
+      "lon": -4.422549,
+      "lat": 36.738239
+    },
+    {
+      "codLinea": 1,
+      "nombreLinea": "Universidad - Alameda Principal - El Palo (P. Virginia)",
+      "sentido": 1,
+      "orden": 4,
+      "codParada": 4,
+      "nombreParada": "Caminito del Rey",
+      "direccion": "Caminito del Rey, 29016 Málaga",
+      "lon": -4.422778,
+      "lat": 36.738425
+    },
+    {
+      "codLinea": 1,
+      "nombreLinea": "Universidad - Alameda Principal - El Palo (P. Virginia)",
+      "sentido": 1,
+      "orden": 5,
+      "codParada": 5,
+      "nombreParada": "Plaza de la Merced",
+      "direccion": "Plaza de la Merced, 29015 Málaga",
+      "lon": -4.422996,
+      "lat": 36.738611
+    }]
