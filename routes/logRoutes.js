@@ -1,17 +1,17 @@
-//CRUD DE LOG CONEXIONES
 const express = require('express');
 const router = express.Router();
-const logConexionesSchema = require("../models/logConexiones.js");
-
-
+const LogConexiones = require('../models/logConexiones');
 // GET ALL
-router.get('/', (req, res) => {
-    logConexionesSchema
-    .find()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+router.get('/', async (req, res) => {
+    try {
+        const logConexiones = await LogConexiones.find() 
+        const sortedData = logConexiones.sort((a, b) => b.caducidad - a.caducidad);
+        res.json(sortedData);
+    }
+    catch (err) {
+        res.json({ message: err });
+    }
 });
-
 // GET ONE
 router.get('/:id', async (req, res) => {
     try {
