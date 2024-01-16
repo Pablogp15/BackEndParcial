@@ -17,7 +17,7 @@ const eventosRoutes = require("./routes/eventosRoutes.js")
 
 app.use('/user', Userroutes);
 app.use('/map', MapRoutes);
-app.use('/logs', LogRoutes);
+app.use('/logConexiones', LogRoutes);
 app.use('/cloudinary', Cloudinary);
 app.use('/eventos', eventosRoutes);
 
