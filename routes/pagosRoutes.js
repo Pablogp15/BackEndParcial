@@ -39,6 +39,14 @@ router.delete('/:id', (req, res) => {
       .catch((error) => res.json({ message: error }));
 });
 
+router.get("/ordenado", async (req, res) => {
+    const data = await gastoSchema.find();
+    // Ordenar los resultados en el lado del cliente
+    const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
+    res.json(sortedData);
+}
+);
+
 router.get("/proximos/:lat/:lon", async (req, res) => {
     pagosSchema.find().then((data) => {
         let lista = [];
