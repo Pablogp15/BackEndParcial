@@ -5,19 +5,29 @@ const mongoose = require('mongoose');
 const eventosSchema = require("../models/eventos.js");
 
 // Rutas de eventos
-router.get('/', (req, res) => {
-    eventosSchema
-    .find()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+router.get("/", async (req, res) => {
+    eventoSchema.find().then((data) => {
+        res.json(data);
+    }).catch((error) => {
+        res.status(500).json({ error: error.message });
+    });
+});
+
+//Get by id
+router.get("/:id", async (req, res) => {
+    eventoSchema.findById(req.params.id).then((data) => {
+        res.json(data);
+    }).catch((error) => {
+        res.status(500).json({ error: error.message });
+    });
 });
 
 router.post('/', (req, res) => {
-    const evento = eventosSchema(req.body);
-    evento
-    .save()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+    eventoSchema.create(req.body).then((data) => {
+        res.json(data);
+    }).catch((error) => {
+        res.status(500).json({ error: error.message });
+    });
 });
 
 router.delete('/:id', (req, res) => {
@@ -28,13 +38,18 @@ router.delete('/:id', (req, res) => {
       .catch((error) => res.json({ message: error }));
 });
 
-router.get('/eventos-cercanos/:codigoPostal', (req, res) => {
-    const { codigoPostal } = req.params;
-    eventosSchema
-      .find({ codigoPostal: codigoPostal })
-      .sort({ timestamp: 1 })
-      .then((data) => res.json(data))
-      .catch((error) => res.json({ message: error }));
+router.get("/proximos/:lat/:lon", async (req, res) => {
+    eventoSchema.find().then((data) => {
+        let lista = [];
+        data.forEach(element => {
+            if (Math.abs(element.lat - req.params.lat) < 0.2 && Math.abs(element.lon - req.params.lon) < 0.2) {
+                lista.push(element);
+            }
+        });
+        lista.sort((a, b) => a.timestamp - b.timestamp);
+        res.json(lista);
+    }).catch((error) => {
+        res.status(500).json({ error: error.message });
+    });
 });
-
 module.exports = router;
