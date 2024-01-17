@@ -19,7 +19,6 @@ const pagosSchema = new mongoose.Schema({
     },
     token: {
         type: String, 
-        required: true,
     },
     lugar: {
         type: String,

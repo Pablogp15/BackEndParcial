@@ -9,13 +9,11 @@ app.use(cors({   origin: '*',   methods: ['GET', 'POST', 'PUT', 'DELETE'],   cre
 
 
 ///Routes
-const LogRoutes = require("./routes/logRoutes.js")
 const Cloudinary = require("./routes/cloudinaryRoutes.js")
-const eventosRoutes = require("./routes/pagosRoutes.js")
+const pagosRoutes = require("./routes/pagosRoutes.js")
 
-app.use('/logConexiones', LogRoutes);
 app.use('/cloudinary', Cloudinary);
-app.use('/eventos', eventosRoutes);
+app.use('/pagos', pagosRoutes);
 
 /////
 
