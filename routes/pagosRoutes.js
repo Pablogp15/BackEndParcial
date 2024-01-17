@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/ordenado/des", async (req, res) => {
-    const data = await gastoSchema.find();
+    const data = await pagosSchema.find();
     const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
     res.json(sortedData);
 }
