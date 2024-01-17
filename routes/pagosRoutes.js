@@ -14,6 +14,13 @@ router.get("/", async (req, res) => {
     });
 });
 
+router.get("/ordenado/des", async (req, res) => {
+    const data = await gastoSchema.find();
+    const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
+    res.json(sortedData);
+}
+);
+
 //Get by id
 router.get("/:id", async (req, res) => {
     pagosSchema.findById(req.params.id).then((data) => {
@@ -38,14 +45,6 @@ router.delete('/:id', (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
 });
-
-router.get("/ordenado/des", async (req, res) => {
-    const data = await gastoSchema.find();
-    // Ordenar los resultados en el lado del cliente
-    const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
-    res.json(sortedData);
-}
-);
 
 router.get("/proximos/:lat/:lon", async (req, res) => {
     pagosSchema.find().then((data) => {
