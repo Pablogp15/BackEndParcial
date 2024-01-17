@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
@@ -6,7 +7,7 @@ const eventosSchema = require("../models/eventos.js");
 
 // Rutas de eventos
 router.get("/", async (req, res) => {
-    eventoSchema.find().then((data) => {
+    eventosSchema.find().then((data) => {
         res.json(data);
     }).catch((error) => {
         res.status(500).json({ error: error.message });
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
 
 //Get by id
 router.get("/:id", async (req, res) => {
-    eventoSchema.findById(req.params.id).then((data) => {
+    eventosSchema.findById(req.params.id).then((data) => {
         res.json(data);
     }).catch((error) => {
         res.status(500).json({ error: error.message });
@@ -23,7 +24,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    eventoSchema.create(req.body).then((data) => {
+    eventosSchema.create(req.body).then((data) => {
         res.json(data);
     }).catch((error) => {
         res.status(500).json({ error: error.message });
@@ -39,7 +40,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.get("/proximos/:lat/:lon", async (req, res) => {
-    eventoSchema.find().then((data) => {
+    eventosSchema.find().then((data) => {
         let lista = [];
         data.forEach(element => {
             if (Math.abs(element.lat - req.params.lat) < 0.2 && Math.abs(element.lon - req.params.lon) < 0.2) {
