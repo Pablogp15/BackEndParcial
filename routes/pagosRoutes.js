@@ -39,7 +39,7 @@ router.delete('/:id', (req, res) => {
       .catch((error) => res.json({ message: error }));
 });
 
-router.get("/ordenado", async (req, res) => {
+router.get("/ordenado/des", async (req, res) => {
     const data = await gastoSchema.find();
     // Ordenar los resultados en el lado del cliente
     const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
